@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 export class EntityNotFoundError extends HttpException {
-  constructor(entityClassName: any, criterio?: any) {
+  constructor(entityClassName: any, criteria?: any) {
     super(
-      criterio
-        ? `Nenhum dado encontrado na entidade ${entityClassName.name}. Criterio: ${criterio}`
-        : `Nenhum dado encontrado na entidade ${entityClassName.name}.`,
+      criteria
+        ? `No data found on ${entityClassName.name} entity. Criteria: ${criteria}.`
+        : `No data found on ${entityClassName.name} entity.`,
 
       HttpStatus.NOT_FOUND,
     );

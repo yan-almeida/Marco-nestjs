@@ -6,9 +6,9 @@ import {
 import { NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { DatabaseExceptionFilter } from './exception-filters/database.exception-filter';
-import { EntityConflictExceptionFilter } from './exception-filters/entity-conflict.exception-filter';
-import { EntityNotFoundExceptionFilter } from './exception-filters/entity-not-found.exception-filter';
+import { BadRequestExceptionFilter } from './exception-filters/bad-request.filter';
+import { EntityConflictExceptionFilter } from './exception-filters/entity-conflict.filter';
+import { EntityNotFoundExceptionFilter } from './exception-filters/entity-not-found.filter';
 
 const bootstrap = async () => {
   const logger = new Logger('MainApi');
@@ -21,9 +21,9 @@ const bootstrap = async () => {
   });
 
   app.useGlobalFilters(
-    new DatabaseExceptionFilter(),
     new EntityNotFoundExceptionFilter(),
     new EntityConflictExceptionFilter(),
+    new BadRequestExceptionFilter(),
   );
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));

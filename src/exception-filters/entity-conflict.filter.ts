@@ -1,12 +1,7 @@
-import {
-  ArgumentsHost,
-  Catch,
-  ExceptionFilter,
-  HttpStatus,
-} from '@nestjs/common';
-import { ApiConflictResponse } from '@nestjs/swagger';
-import { Response } from 'express';
-import { EntityConflictError } from 'src/exceptions/entity-conflict-error.exception';
+import { ArgumentsHost, Catch, ExceptionFilter, HttpStatus } from "@nestjs/common";
+import { ApiConflictResponse } from "@nestjs/swagger";
+import { Response } from "express";
+import { EntityConflictError } from "src/exceptions/entity-conflict-error.exception";
 
 @Catch(EntityConflictError)
 export class EntityConflictExceptionFilter implements ExceptionFilter {
