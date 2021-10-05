@@ -6,6 +6,7 @@ import { join } from 'path';
 import { AppService } from './app.service';
 import ormConfig from './configs/orm.config';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { AutorModule } from './modules/autor/autor.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
       rootPath: join(__dirname, '..', 'public'),
     }),
     TypeOrmModule.forRoot(ormConfig),
-  
+    AutorModule,
   ],
   providers: [AppService],
 })

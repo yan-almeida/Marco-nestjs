@@ -7,7 +7,10 @@ import { ApiTags } from '@nestjs/swagger';
  * @param controllerName Controller name
  * @param customTagName ApiTag name (optional)
  */
-export function ApiController(controllerName: string, customTagName?: string): ClassDecorator {
+export function ApiController(
+  controllerName: string,
+  customTagName?: string,
+): ClassDecorator {
   return (target) => {
     Controller(controllerName)(target);
     ApiTags(customTagName ?? controllerName)(target);
