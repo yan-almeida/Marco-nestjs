@@ -1,6 +1,7 @@
 import { UniqueIdentifierEntity } from 'src/common/entities/unique-identifier.entity';
 import { EncryptedColumn } from 'src/decorators/encrypted-column.decorator';
-import { Entity } from 'typeorm';
+import { Livro } from 'src/modules/livro/entities/livro.entity';
+import { Entity, ManyToMany } from 'typeorm';
 
 @Entity()
 export class Autor extends UniqueIdentifierEntity {
@@ -20,4 +21,7 @@ export class Autor extends UniqueIdentifierEntity {
 
   @EncryptedColumn()
   telefone: string;
+
+  @ManyToMany(() => Livro, (livro) => livro.autores)
+  livros: Livro[];
 }

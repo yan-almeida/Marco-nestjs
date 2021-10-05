@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import ormConfig from './configs/orm.config';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { AutorModule } from './modules/autor/autor.module';
+import { LivroModule } from './modules/livro/livro.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AutorModule } from './modules/autor/autor.module';
     }),
     TypeOrmModule.forRoot(ormConfig),
     AutorModule,
+    LivroModule,
   ],
   providers: [AppService],
 })

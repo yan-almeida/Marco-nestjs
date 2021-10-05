@@ -1,11 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsEmail, MaxLength, MinLength } from 'class-validator';
+import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 
 export class CreateAutorDto {
   @ApiProperty({
     example: 'Marco',
   })
+  @IsString({ message: 'Nome é inválido.' })
   @MaxLength(255, {
     message: 'Tamanho máximo do nome deve ser menor que 255 caracteres.',
   })
@@ -30,6 +31,7 @@ export class CreateAutorDto {
   @MaxLength(16, {
     message: 'Tamanho máximo do telefone deve ser menor que 16 caracteres.',
   })
+  @IsString({ message: 'Telefone é inválido.' })
   @MinLength(8, {
     message: 'Tamanho mínimo do telefone deve ser maior que 8 caracteres.',
   })

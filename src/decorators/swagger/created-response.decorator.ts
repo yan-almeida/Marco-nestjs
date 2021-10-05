@@ -24,7 +24,7 @@ const CREATED_MESSAGE =
  * The common use case of this status code is as the result of a [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) request.
  *
  * @see [201 Created](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201)
- * @param options These are the same types as ApiResponse
+ * @param options - These are the same types as ApiResponse
  */
 export function CreatedResponse(options?: ApiResponseOptions) {
   return applyDecorators(

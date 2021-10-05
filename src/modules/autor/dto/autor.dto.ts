@@ -7,12 +7,16 @@ export class AutorDto {
   })
   id: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Marco',
+  })
   nome: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'example@example.com',
+  })
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '(00) 9 0000-0000' })
   telefone: string;
 }

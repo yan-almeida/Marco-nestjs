@@ -18,7 +18,7 @@ const UNAUTHORIZED_MESSAGE =
  * This status is similar to [403](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403), but in this case, authentication is possible.
  *
  * @see [401 Unauthorized](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401)
- * @param options These are the same types as ApiResponse
+ * @param options - These are the same types as ApiResponse
  */
 export function UnauthorizedResponse(options?: ApiResponseOptions) {
   return applyDecorators(

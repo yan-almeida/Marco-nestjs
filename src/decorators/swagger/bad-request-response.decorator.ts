@@ -17,7 +17,7 @@ const BAD_REQUEST_MESSAGE =
  * deceptive request routing).
  *
  * @see [400 Bad Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400)
- * @param options These are the same types as ApiResponse
+ * @param options - These are the same types as ApiResponse
  */
 export function BadRequestResponse(options?: ApiResponseOptions) {
   return applyDecorators(

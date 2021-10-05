@@ -27,7 +27,7 @@ const OK_MESSAGE =
  * The successful result of a [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT) or a [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE) is often not a 200 OK but a [204](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204) No Content (or a [201](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201) Created when the resource is uploaded for the first time).
  *
  * @see [200 Ok](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)
- * @param options These are the same types as ApiResponse
+ * @param options - These are the same types as ApiResponse
  */
 export function OkResponse(options?: ApiResponseOptions) {
   return applyDecorators(

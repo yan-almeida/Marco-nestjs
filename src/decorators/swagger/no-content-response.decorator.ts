@@ -22,7 +22,7 @@ const NO_CONTENT_MESSAGE = `Success status response code indicates that a reques
  * A 204 response is cacheable by default (an [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header is included in such a response).
  *
  * @see [204 No Content](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204)
- * @param options These are the same types as ApiResponse
+ * @param options - These are the same types as ApiResponse
  */
 export function NoContentResponse(options?: ApiResponseOptions) {
   return applyDecorators(

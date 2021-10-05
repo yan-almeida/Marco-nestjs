@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityNotFoundError } from 'src/exceptions/entity-not-found-error.exception';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { CreateAutorDto } from './dto/create-autor.dto';
 import { UpdateAutorDto } from './dto/update-autor.dto';
 import { Autor } from './entities/autor.entity';
@@ -23,6 +23,20 @@ export class AutorService {
 
     if (autores.length === 0) {
       throw new EntityNotFoundError(Autor);
+    }
+
+    return autores;
+  }
+
+  async findByIds(ids: string[]) {
+    const autores = await this._autorRepo.find({
+      where: {
+        id: In(ids),
+      },
+    });
+
+    if (autores.length === 0) {
+      throw new EntityNotFoundError(Autor, ids);
     }
 
     return autores;
