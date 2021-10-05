@@ -1,5 +1,9 @@
 import { applyDecorators, SetMetadata } from '@nestjs/common';
-import { ApiForbiddenResponse, ApiOperation, ApiResponseOptions } from '@nestjs/swagger';
+import {
+  ApiForbiddenResponse,
+  ApiOperation,
+  ApiResponseOptions,
+} from '@nestjs/swagger';
 import { ApiGenericErroDto } from 'src/common/dtos/api-generic-error.dto';
 
 const IS_FORBIDDEN_RESPONSE = 'forbiddenResponse';

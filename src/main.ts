@@ -1,7 +1,7 @@
 import {
   ClassSerializerInterceptor,
   Logger,
-  ValidationPipe
+  ValidationPipe,
 } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -44,7 +44,7 @@ const bootstrap = async () => {
 
   await app.listen(process.env.PORT || 3001);
   const url = await app.getUrl();
-  
+
   logger.debug(`Swagger application is running on: ${url}/swagger`);
 };
 

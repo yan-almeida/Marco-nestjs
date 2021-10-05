@@ -1,9 +1,19 @@
-import { applyDecorators, HttpCode, HttpStatus, SetMetadata } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiResponseOptions } from '@nestjs/swagger';
+import {
+  applyDecorators,
+  HttpCode,
+  HttpStatus,
+  SetMetadata,
+} from '@nestjs/common';
+import {
+  ApiOkResponse,
+  ApiOperation,
+  ApiResponseOptions,
+} from '@nestjs/swagger';
 
 const IS_OK_RESPONSE = 'okResponse';
 
-const OK_MESSAGE = 'Success status response code indicates that the request has succeeded';
+const OK_MESSAGE =
+  'Success status response code indicates that the request has succeeded';
 
 /**
  * The HTTP `200 OK` success status response code indicates that the request has succeeded. A 200 response is cacheable by default.
@@ -23,7 +33,10 @@ export function OkResponse(options?: ApiResponseOptions) {
   return applyDecorators(
     SetMetadata(IS_OK_RESPONSE, options),
     HttpCode(HttpStatus.OK),
-    ApiOkResponse({ ...options, description: options?.description ?? OK_MESSAGE }),
+    ApiOkResponse({
+      ...options,
+      description: options?.description ?? OK_MESSAGE,
+    }),
     ApiOperation({ summary: options.description }),
   );
 }

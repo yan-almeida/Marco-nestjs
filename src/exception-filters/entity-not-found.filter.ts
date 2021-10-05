@@ -1,8 +1,13 @@
-import { ArgumentsHost, Catch, ExceptionFilter, HttpStatus } from "@nestjs/common";
-import { ApiNotFoundResponse } from "@nestjs/swagger";
-import { Response } from "express";
-import { EntityNotFoundError } from "src/exceptions/entity-not-found-error.exception";
-import { NotFoundError } from "src/exceptions/not-found-error.exception";
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpStatus,
+} from '@nestjs/common';
+import { ApiNotFoundResponse } from '@nestjs/swagger';
+import { Response } from 'express';
+import { EntityNotFoundError } from 'src/exceptions/entity-not-found-error.exception';
+import { NotFoundError } from 'src/exceptions/not-found-error.exception';
 
 @Catch(EntityNotFoundError, NotFoundError)
 export class EntityNotFoundExceptionFilter implements ExceptionFilter {
