@@ -35,6 +35,6 @@ export class CreateAutorDto {
   @MinLength(8, {
     message: 'Tamanho mínimo do telefone deve ser maior que 8 caracteres.',
   })
-  @Transform((property) => property.value.replace(/\D+g/, ''))
+  @Transform((property) => property.value.replace(/\D+/g, ''))
   telefone: string;
 }

@@ -10,7 +10,7 @@ import { VendaService } from './venda.service';
 
 @ApiController('venda')
 export class VendaController {
-  constructor(private readonly vendaService: VendaService) {}
+  constructor(private readonly _vendaService: VendaService) {}
 
   @Post()
   @CreatedResponse({
@@ -20,23 +20,23 @@ export class VendaController {
   @BadRequestResponse()
   @NotFoundResponse()
   async create(@Body() dto: CreateVendaDto): Promise<VendaDto> {
-    const result = await this.vendaService.create(dto);
+    const result = await this._vendaService.create(dto);
 
     return VendaParser.toVendaDto(result);
   }
 
   @Get()
   findAll() {
-    return this.vendaService.findAll();
+    return this._vendaService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.vendaService.findOne(+id);
+    return this._vendaService.findOne(+id);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.vendaService.remove(+id);
+    return this._vendaService.remove(+id);
   }
 }

@@ -33,7 +33,7 @@ export class LivroController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this._livroService.findOne(+id);
+    return this._livroService.findOne(id);
   }
 
   @Patch(':id')

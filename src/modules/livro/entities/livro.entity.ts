@@ -1,7 +1,8 @@
 import { UniqueIdentifierEntity } from 'src/common/entities/unique-identifier.entity';
 import { NormalizedColumn } from 'src/decorators/normalized-column.decorator';
 import { Autor } from 'src/modules/autor/entities/autor.entity';
-import { Entity, JoinTable, ManyToMany } from 'typeorm';
+import { Venda } from 'src/modules/venda/entities/venda.entity';
+import { Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm';
 
 @Entity()
 export class Livro extends UniqueIdentifierEntity {
@@ -32,4 +33,7 @@ export class Livro extends UniqueIdentifierEntity {
   @ManyToMany(() => Autor, (autor) => autor.livros)
   @JoinTable()
   autores: Autor[];
+
+  @OneToMany(() => Venda, (venda) => venda.livro)
+  vendas: Venda[];
 }

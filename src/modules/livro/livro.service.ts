@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntityNotFoundError, Repository } from 'typeorm';
 import { AutorService } from '../autor/autor.service';
 import { CreateLivroDto } from './dto/create-livro.dto';
 import { UpdateLivroDto } from './dto/update-livro.dto';
@@ -28,8 +28,14 @@ export class LivroService {
     return `This action returns all livro`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} livro`;
+  async findOne(id: string) {
+    const livro = await this._livroRepo.findOne(id, { relations: ['autores'] });
+
+    if (!livro) {
+      throw new EntityNotFoundError(Livro, id);
+    }
+
+    return livro;
   }
 
   update(id: number, dto: UpdateLivroDto) {

@@ -8,6 +8,8 @@ import ormConfig from './configs/orm.config';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { AutorModule } from './modules/autor/autor.module';
 import { LivroModule } from './modules/livro/livro.module';
+import { UsuarioModule } from './modules/usuario/usuario.module';
+import { VendaModule } from './modules/venda/venda.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { LivroModule } from './modules/livro/livro.module';
     TypeOrmModule.forRoot(ormConfig),
     AutorModule,
     LivroModule,
+    UsuarioModule,
+    VendaModule,
   ],
   providers: [AppService],
 })
