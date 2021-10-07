@@ -1,9 +1,12 @@
-import { Body, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiController } from 'src/decorators/swagger/api-controller.decorator';
 import { BadRequestResponse } from 'src/decorators/swagger/bad-request-response.decorator';
 import { CreatedResponse } from 'src/decorators/swagger/created-response.decorator';
 import { NotFoundResponse } from 'src/decorators/swagger/not-found-response.decorator';
+import { Page } from '../../common/dtos/page.dto';
+import { OkResponse } from '../../decorators/swagger/ok-response.decorator';
 import { CreateLivroDto } from './dto/create-livro.dto';
+import { FilterLivroDto } from './dto/filter-livro.dto';
 import { LivroDto } from './dto/livro.dto';
 import { UpdateLivroDto } from './dto/update-livro.dto';
 import { LivroService } from './livro.service';
@@ -27,8 +30,14 @@ export class LivroController {
   }
 
   @Get()
-  findAll() {
-    return this._livroService.findAll();
+  @OkResponse({
+    description: 'Listagem de Livros - paginação',
+    type: LivroDto,
+  })
+  async findAll(@Query() filter: FilterLivroDto): Promise<Page<LivroDto>> {
+    const paginated = await this._livroService.findAll(filter);
+
+    return paginated.map(LivroParser.toLivroDto);
   }
 
   @Get(':id')

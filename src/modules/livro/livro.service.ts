@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityNotFoundError, Repository } from 'typeorm';
+import { Page } from '../../common/dtos/page.dto';
 import { AutorService } from '../autor/autor.service';
 import { CreateLivroDto } from './dto/create-livro.dto';
+import { FilterLivroDto } from './dto/filter-livro.dto';
 import { UpdateLivroDto } from './dto/update-livro.dto';
 import { Livro } from './entities/livro.entity';
 
@@ -24,8 +26,15 @@ export class LivroService {
     return this._livroRepo.save(livro);
   }
 
-  findAll() {
-    return `This action returns all livro`;
+  async findAll(filter: FilterLivroDto) {
+    const queryBuilder = this._livroRepo.createQueryBuilder('l');
+
+    filter.createPaginationQuery(queryBuilder);
+    filter.createWhere(queryBuilder);
+
+    const [livros, count] = await queryBuilder.getManyAndCount();
+
+    return Page.of(livros, count);
   }
 
   async findOne(id: string) {
